@@ -24,7 +24,7 @@ const Navbar = () => {
           {session && (<>
             <button id="dropdownDefaultButton" onClick={() => { setShowdrop(!showdrop) }} onBlur={() => {setTimeout(() => {setShowdrop(!showdrop)
               
-            }, 300);}} data-dropdown-toggle="dropdown" className="inline-flex items-center justify-center text-white bg-brand box-border border border-transparent hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none" type="button">
+            }, 400);}} data-dropdown-toggle="dropdown" className="inline-flex items-center justify-center text-white bg-brand box-border border border-transparent hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none" type="button">
               Welcome {`${session.user.name}`}
               <svg className="w-4 h-4 ms-1.5 -me-0.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m19 9-7 7-7-7" /></svg>
             </button>
@@ -33,17 +33,15 @@ const Navbar = () => {
             <div id="dropdown" className={`z-10 ${showdrop ? " " : "hidden"} absolute  top-full mt-4 bg-blue-900 border border-default-medium rounded-base shadow-lg w-44`}>
               <ul className="p-2 text-sm text-body font-medium" aria-labelledby="dropdownDefaultButton">
                 <li>
-                  <Link href="/Dashboard" className="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded">Dashboard</Link>
+                  <Link href="/Dashboard" className="inline-flex border-2 items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded">Dashboard</Link>
                 </li>
                 <li>
-                  <Link href={`/${session?.user?.name}`} className="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded">Your page</Link>
+                  <Link href={`/${session.user.name}`} className="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded">Your page</Link>
                 </li>
-                <li>
-                  <Link href="#" className="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded">Settings</Link>
-                </li>
+               
 
                 <li>
-                  <Link href="#" onClick={() => { signOut(); console.log("hell") }} className="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded">Log Out</Link>
+                  <Link href="#" onClick={() => { signOut();  }} className="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded">Log Out</Link>
                 </li>
               </ul>
             </div></>
