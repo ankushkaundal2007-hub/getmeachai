@@ -1,14 +1,16 @@
 "use client"
 import { signIn,useSession } from 'next-auth/react'
-import React from 'react'
+import {React,useEffect} from 'react'
 import { useRouter } from 'next/navigation'
 const Login = () => {
     const { data: session } = useSession()
-     if(session) {
-        const router=useRouter()
-        router.push('/Dashboard')
+      const router = useRouter();
 
- }
+  useEffect(() => {
+    if (session) {
+      router.push("/Dashboard");
+    }
+  }, [session,router]);
     
   return (
     <>
