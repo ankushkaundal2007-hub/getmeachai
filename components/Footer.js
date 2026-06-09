@@ -1,4 +1,5 @@
 import React from 'react'
+import Link from 'next/link'
 
 const Footer = () => {
   return (
@@ -11,11 +12,11 @@ const Footer = () => {
 </div>  
       <div className="policies flex">
         <ul className='flex justify-center items-center my-2 gap-3'>
-          <li>About Us</li>
-          <li>Contact Us</li>
-          <li>Privacy Policy</li>
-          <li>Terms & Conditions</li>
-          <li>Refund Policies</li>
+          <li><Link href="/Read">About Us</Link></li>
+          <li><Link href="/Contact">Contact Us</Link></li>
+          <li><Link href="/privacy">Privacy Policy</Link></li>
+          <li><Link href="/terms">Terms & Conditions</Link></li>
+          <li><Link href="/refund">Refund Policies</Link></li>
         </ul>
       </div>
           </footer>

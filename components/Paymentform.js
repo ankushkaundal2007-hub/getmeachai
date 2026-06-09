@@ -1,26 +1,77 @@
 "use client";
 import {React,useState,useEffect} from "react";
+import { signIn,useSession } from 'next-auth/react'
+import { useRouter } from 'next/navigation'
+
 
 import Script from "next/script";
 
-export default function PaymentForm({user}) {
+export default function PaymentForm() {
+    const { data: session } = useSession()
+      
+      const router = useRouter();
+        useEffect(() => {
+          if (!session) {
+            router.push("/Login");
+          }
+        }, [session,router]);
   const [user_data, setUser_data] = useState([])
+
+   
+  const [current, setCurrent] = useState(null)
+ 
   const [pay, setPay] = useState(false)
 const [userpay, setUserpay] = useState({
   name:"",
   message:"",
   amount:"",
+  payed_to:"",
 })
 useEffect(() => {
-    getData();
+  if(current?.email){
+    setUserpay(prev => ({
+      ...prev,
+      payed_to: current.email
+    }))
+  }
+}, [current])
   
-}, [pay])
+useEffect(() => {
+  if (session?.user?.email) {
+    getData();
+  }
+}, [session, pay]);
+
+const getProfile = async () => {
+    const res = await fetch("/api/user");
+
+    const data = await res.json();
+    
+ const foundUser = data.find(
+    (u) => u.email === session?.user?.email
+  );
+   
+  setCurrent(foundUser);
+
+};
+
+useEffect(() => {
+  if (session?.user?.email) {
+    getProfile();
+  }
+}, [session]);
 
 const getData=async () => {
-   let req= await fetch("/api/create-order")
+   let req= await fetch(`/api/create-order`)
      const data=await req.json();
+       console.log(data)
+    
+       const foundUser= data.filter(
+       (u)=> u.payed_to === session?.user?.email
+       )
+       
      setUser_data(
-    data
+    foundUser
      )
    
 }
@@ -50,8 +101,16 @@ const options = {
   currency: order.currency,
   order_id: order.id,
   name: "GetMeAChai",
-  handler: function (response) {
-    alert("payment successful")
+  handler:async function (response) {
+     await fetch("/api/create-payment", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(userpay),
+  });
+ setPay(prev => !prev);
+  alert("Payment Successful");
 
   },
   
@@ -65,7 +124,7 @@ setUserpay({
   message: "",
   amount: "",
 });
-setPay(!pay)
+
   };
 
   return (
@@ -76,13 +135,13 @@ setPay(!pay)
       <img src='/bACK.jpg' className='w-full'></img>
     </div>
     <div className=" border-2 border-white logo  rounded-xl w-[100px] h-[100px] bg-cover absolute left-[47%] bottom-[-9%]">
-      <img src="/Gautam Profile.jpg"  className='bg-cover rounded-xl' />
+      <img src={current?.profile} className='bg-cover rounded-xl' />
     </div>
 </div>
 <div className="name flex flex-col gap-3 justify-center items-center mt-12">
-    <h1 className='text-3xl text-white'>@{user.split("%")[0]}</h1>
-  <p className="text-slate-400">speaks on peace of mind in daily living.</p>
-  <p className="text-slate-400">292 Posts</p>
+    <h1 className='text-3xl text-white'>{current?.Name}</h1>
+  <p className="text-slate-400">{current?.Quote}</p>
+  
   </div>
   <div className="payments flex gap-3 min-h-[25vh] pt-5 mt-10 justify-center">
     <div className="suporters w-1/2 pt-10 text-white">
@@ -92,7 +151,7 @@ setPay(!pay)
   <li key={index} className='flex gap-2 text-center items-center'>
     <img src="user.gif" width={33} className='rounded-full' />
     <p className='text-gray-400'>
-      {item.name} donated 
+       {item.name}donated 
       <span className='text-white font-bold'>
          ₹{item.amount}
       </span>
@@ -118,7 +177,7 @@ setPay(!pay)
             onChange={(e)=>handleChange(e)}
             type="text"
             placeholder="Enter your name"
-            className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
+            className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
         </div>
         <div>
@@ -131,7 +190,7 @@ setPay(!pay)
             name="message"
             onChange={(e)=>handleChange(e)}
             placeholder="Write a message..."
-            className="w-full p-3 border rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-purple-500"
+            className="w-full p-3 border rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-blue-500"
           ></textarea>
         </div>
         <div>
@@ -145,13 +204,14 @@ setPay(!pay)
             value={userpay.amount}
             min="1"
             placeholder="Enter amount"
-            className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
+            className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
         </div>
       <button
+      disabled={userpay.amount<1 || userpay.name.length<2}
       type="button"
         onClick={()=>handlePayment()}
-        className="w-full bg-purple-600 text-white py-3 rounded-lg font-semibold hover:bg-purple-700 transition"
+        className=" disabled:bg-gray-500 w-full bg-blue-800 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition"
       >
         Pay Now
       </button>

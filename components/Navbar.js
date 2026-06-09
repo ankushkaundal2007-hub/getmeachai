@@ -33,15 +33,15 @@ const Navbar = () => {
             <div id="dropdown" className={`z-10 ${showdrop ? " " : "hidden"} absolute  top-full mt-4 bg-blue-900 border border-default-medium rounded-base shadow-lg w-44`}>
               <ul className="p-2 text-sm text-body font-medium" aria-labelledby="dropdownDefaultButton">
                 <li>
-                  <Link href="/Dashboard" className="inline-flex border-2 items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded">Dashboard</Link>
+                  <Link href="/Dashboard" className="inline-flex hover:border-2 items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded">Dashboard</Link>
                 </li>
                 <li>
-                  <Link href={`/${session.user.name}`} className="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded">Your page</Link>
+                  <Link href={`/${session.user.name}`} className=" hover:border-2 inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded">Your page</Link>
                 </li>
                
 
                 <li>
-                  <Link href="#" onClick={() => { signOut();  }} className="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded">Log Out</Link>
+                  <Link href="#" onClick={() => { signOut();  }} className=" hover:border-2 inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded">Log Out</Link>
                 </li>
               </ul>
             </div></>

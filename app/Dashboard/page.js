@@ -13,7 +13,7 @@ const Dashboard = () => {
     }
   }, [session,router]);
 
-  const [form, setForm] = useState({Name:"",id:"",secret:"",email:""})
+  const [form, setForm] = useState({Name:"",id:"",secret:"",email:"",Quote:"",profile:""})
 
   const handleChange =(e) => {
   setForm({
@@ -38,7 +38,6 @@ const Dashboard = () => {
 
     let result=await res.text()
 
-    console.log(result)
   }
   
   
@@ -50,11 +49,11 @@ const Dashboard = () => {
       <div className="w-full max-w-md bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl shadow-2xl p-8">
 
         <h1 className="text-3xl font-bold text-center text-white mb-2">
-         Register
+         Profile
         </h1>
 
         <p className="text-center text-gray-300 mb-8">
-          Create your dashboard account
+         Make/Update Your Profile
         </p>
 
         <form className="space-y-5">
@@ -85,6 +84,34 @@ const Dashboard = () => {
             onChange={(e)=>{handleChange(e)}}
               type="email"
               placeholder="john@example.com"
+              className="w-full p-3 rounded-lg bg-white/5 border border-white/20 text-white placeholder-gray-400 focus:outline-none focus:border-purple-500"
+            />
+          </div>
+          <div>
+            <label className="block text-sm text-gray-200 mb-2">
+              Quote
+            </label>
+
+            <input
+            name="Quote"
+      
+            onChange={(e)=>{handleChange(e)}}
+              type="text"
+              placeholder="Never Give Up"
+              className="w-full p-3 rounded-lg bg-white/5 border border-white/20 text-white placeholder-gray-400 focus:outline-none focus:border-purple-500"
+            />
+          </div>
+          <div>
+            <label className="block text-sm text-gray-200 mb-2">
+              Profile pic
+            </label>
+
+            <input
+            name="profile"
+      
+            onChange={(e)=>{handleChange(e)}}
+              type="text"
+              placeholder="url for profile picture"
               className="w-full p-3 rounded-lg bg-white/5 border border-white/20 text-white placeholder-gray-400 focus:outline-none focus:border-purple-500"
             />
           </div>
@@ -129,12 +156,7 @@ const Dashboard = () => {
 
         </form>
 
-        <p className="text-center text-gray-400 mt-6 text-sm">
-          Already have an account?
-          <span className="text-blue-400 cursor-pointer ml-1">
-            Login
-          </span>
-        </p>
+      
 
       </div>
     </div>

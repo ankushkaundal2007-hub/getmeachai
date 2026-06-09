@@ -1,14 +1,10 @@
 "use client"
 import { useSession, signIn, signOut } from "next-auth/react"
+import Link from "next/link";
 
 
 export default function Home() {
-  // const { data: session } = useSession()
-  // if(session) {
-  //   return <>
-  //     Signed in as {session.user.email} <br/>
-  //     <button onClick={() => signOut()}>Sign out</button>
-  //   </>}
+  
   return (
     <>
       <div className=" container min-h-[50vh] mx-auto flex flex-col justify-center items-center text-white">
@@ -19,8 +15,8 @@ export default function Home() {
         </div>
         <div className="into mt-[-55px] mb-9 text-xl">A Crowdfunding platform for creaters. Get funded by your fans and followers. Start Now!</div>
         <div className="buttons flex justify-center items-center mt-4 gap-2 mx-auto ">
-          <button type="button" className="rounded-2xl text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-base text-lg px-4 py-2.5 text-center leading-5">Start Here</button>
-          <button type="button" className="rounded-2xl text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-base text-lg px-4 py-2.5 text-center leading-5">Read More</button>
+          <button type="button" className="rounded-2xl text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-base text-lg px-4 py-2.5 text-center leading-5"><Link href={"/Login"}>Start Here</Link></button>
+          <button type="button" className="rounded-2xl text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-base text-lg px-4 py-2.5 text-center leading-5"><Link href={"/Read"}>Read More</Link></button>
         </div>
       </div>
       </div>

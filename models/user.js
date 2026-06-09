@@ -15,6 +15,9 @@ const UserSchema = new mongoose.Schema({
 
     secret: String,
 
+    Quote: String,
+    profile: String,
+
     createdAt: {
         type: Date,
         default: Date.now,
@@ -23,4 +26,3 @@ const UserSchema = new mongoose.Schema({
 
 export default mongoose.models.User ||
     mongoose.model("User", UserSchema);
-    

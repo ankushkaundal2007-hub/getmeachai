@@ -6,6 +6,7 @@ const PaymentSchema = new mongoose.Schema({
   amount: Number,
 
   orderId: String,
+  payed_to:String,
  
 
   done: {
