@@ -1,36 +1,157 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# GetMeAChai ☕
 
-## Getting Started
+GetMeAChai is my first full-stack web application built using Next.js, MongoDB, Tailwind CSS, and NextAuth.
 
-First, run the development server:
+The project is inspired by creator-support platforms where users can create profiles and receive support from others. The primary goal of this project was to gain hands-on experience with full-stack development, authentication, database management, and building a complete web application from scratch.
+
+---
+
+## Features
+
+* Authentication using GitHub and Google OAuth
+* User profile pages
+* Dynamic routing with Next.js
+* Session management using NextAuth
+* MongoDB database integration
+* Responsive UI built with Tailwind CSS
+* Contact page and additional static pages
+* Basic payment gateway integration
+
+---
+## Screenshots
+
+### Home Page
+![Home Page](./screenshots/Home.png)
+
+### Login Page
+![Login Page](./screenshots/login.png)
+
+### Profile Page
+![Profile Page](./screenshots/profile.png)
+
+### Dashboard
+![Dashboard](./screenshots/dashboard.png)
+
+### Payment Page
+![Payment Page](./screenshots/payment.png)
+
+## Tech Stack
+
+### Frontend
+
+* Next.js
+* React
+* Tailwind CSS
+
+### Backend
+
+* Next.js API Routes
+
+### Database
+
+* MongoDB
+
+### Authentication
+
+* NextAuth
+* GitHub OAuth
+* Google OAuth
+
+### Payments
+
+* Razorpay Integration
+
+---
+
+## What I Learned
+
+Building this project helped me learn:
+
+* Authentication and OAuth workflows
+* Session handling with NextAuth
+* Database operations using MongoDB
+* Dynamic routing in Next.js
+* State management in React
+* Creating reusable components
+* API route development
+* Handling forms and user interactions
+* Debugging real-world development issues
+* Organizing and maintaining a full-stack project structure
+
+---
+
+## Challenges Faced
+
+Some challenges encountered during development included:
+
+* Configuring GitHub and Google authentication
+* Managing environment variables securely
+* Working with user sessions
+* Handling routing and navigation issues
+* Integrating payment functionality
+* Building responsive layouts with Tailwind CSS
+* Debugging application errors and edge cases
+
+These challenges provided valuable practical experience and improved my understanding of full-stack application development.
+
+---
+
+## Current Limitations
+
+This project was built primarily as a learning project and is not intended for production use.
+
+Current limitations include:
+
+* Payment signature verification is not yet implemented
+* Payment security flow can be improved further
+* Additional validation and error handling can be added
+* UI/UX can be refined further
+
+---
+
+## Future Improvements
+
+Planned improvements include:
+
+* Payment signature verification and secure payment confirmation
+* Improved dashboard functionality
+* Better profile customization options
+* Enhanced user experience and design
+* Notification system
+* Additional account management features
+
+---
+
+## Installation
+
+Clone the repository:
+
+```bash
+git clone <repository-url>
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open:
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+```bash
+http://localhost:3000
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## Author
 
-To learn more about Next.js, take a look at the following resources:
+Ankush Kaundal
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This project represents my first complete full-stack application and an important milestone in my journey as a web developer.
