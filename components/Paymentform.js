@@ -151,7 +151,7 @@ setUserpay({
   <li key={index} className='flex gap-2 text-center items-center'>
     <img src="user.gif" width={33} className='rounded-full' />
     <p className='text-gray-400'>
-       {item.name}donated 
+       {item.name} donated 
       <span className='text-white font-bold'>
          ₹{item.amount}
       </span>

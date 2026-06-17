@@ -16,15 +16,7 @@ export async function POST(req) {
     currency: "INR",
   });
   await connectDB();
-  // await payment.create({
-  //   name:data.name,
-  //   message:data.message,
-  //   amount:Number(data.amount),
-  //   payed_to:data.payed_to,
-  //   orderId:order.id,
-  //   done:true
-
-  // })
+ 
 
 
   return NextResponse.json(order);
